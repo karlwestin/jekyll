@@ -19,6 +19,7 @@ module Jekyll
       self.source          = File.expand_path(config['source'])
       self.dest            = File.expand_path(config['destination'])
       self.plugins         = File.expand_path(config['plugins'])
+      self.layouts_directory = File.expand_path(config['layouts'])
       self.lsi             = config['lsi']
       self.pygments        = config['pygments']
       self.permalink_style = config['permalink'].to_sym
@@ -103,7 +104,7 @@ module Jekyll
     #
     # Returns nothing.
     def read_layouts(dir = '')
-      base = File.join(self.source, dir, "_layouts")
+      base = File.join(self.layouts_directory, dir)
       return unless File.exists?(base)
       entries = []
       Dir.chdir(base) { entries = filter_entries(Dir['*.*']) }
