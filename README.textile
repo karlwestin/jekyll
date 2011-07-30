@@ -4,6 +4,13 @@ By Tom Preston-Werner, Nick Quaranto, and many awesome contributors!
 
 Jekyll is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind "GitHub Pages":http://pages.github.com, which you can use to host your project's page or blog right here from GitHub.
 
+h3. About this particular fork
+
+This fork is modified for the purpose of updating your site via a synced dropbox folder. This requires the content to be placed in a separate folder. If you do not wish to do this, you are probably better off using the "original version":https://github.com/mojombo/jekyll
+
+I will post more info on how to set up the dropbox syncing. If you can't wait, contact me and i can show you.
+// Karl
+
 h2. Getting Started
 
 * "Install":http://wiki.github.com/mojombo/jekyll/install the gem
