@@ -12,6 +12,14 @@ h2. Getting Started
 * Fork and "Contribute":http://wiki.github.com/mojombo/jekyll/contribute your own modifications
 * Have questions? Post them on the "Mailing List":http://groups.google.com/group/jekyll-rb
 
+h3. Installing this specific version
+
+* Clone git repository
+* gem build jekyll.gemspec
+* gem install jekyll-(version no).gem
+
+"More info about this":http://stackoverflow.com/questions/2577346/how-to-install-gem-from-github-source
+
 h2. Diving In
 
 * "Migrate":http://wiki.github.com/mojombo/jekyll/blog-migrations from your previous system
