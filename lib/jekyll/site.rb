@@ -4,7 +4,7 @@ module Jekyll
 
   class Site
     attr_accessor :config, :layouts, :posts, :pages, :static_files,
-                  :categories, :exclude, :source, :dest, :lsi, :pygments,
+                  :categories, :exclude, :source, :dest, :lsi, :layouts_directory, :includes_directory, :pygments,
                   :permalink_style, :tags, :time, :future, :safe, :plugins, :limit_posts
 
     attr_accessor :converters, :generators
@@ -20,6 +20,7 @@ module Jekyll
       self.dest            = File.expand_path(config['destination'])
       self.plugins         = File.expand_path(config['plugins'])
       self.layouts_directory = File.expand_path(config['layouts'])
+      self.includes_directory = File.expand_path(config['includes'])
       self.lsi             = config['lsi']
       self.pygments        = config['pygments']
       self.permalink_style = config['permalink'].to_sym

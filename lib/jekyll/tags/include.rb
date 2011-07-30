@@ -7,7 +7,7 @@ module Jekyll
     end
 
     def render(context)
-      includes_dir = File.join(context.registers[:site].source, '_includes')
+      includes_dir = File.join(context.registers[:site].includes_directory)
 
       if File.symlink?(includes_dir)
         return "Includes directory '#{includes_dir}' cannot be a symlink"
