@@ -25,6 +25,7 @@ module Jekyll
       self.pygments        = config['pygments']
       self.permalink_style = config['permalink'].to_sym
       self.exclude         = config['exclude'] || []
+      self.include         = config['include'] || []
       self.future          = config['future']
       self.limit_posts     = config['limit_posts'] || nil
 
@@ -74,8 +75,10 @@ module Jekyll
       # If safe mode is off, load in any Ruby files under the plugins
       # directory.
       unless self.safe
-        Dir[File.join(self.plugins, "**/*.rb")].each do |f|
-          require f
+        self.plugins.each do |plugins|
+            Dir[File.join(plugins, "**/*.rb")].each do |f|
+              require f
+            end
         end
       end
 
@@ -125,7 +128,7 @@ module Jekyll
     # Returns nothing.
     def read_directories(dir = '')
       base = File.join(self.source, dir)
-      entries = Dir.chdir(base) { filter_entries(Dir['*']) }
+      entries = Dir.chdir(base) { filter_entries(Dir.entries('.')) }
 
       self.read_posts(dir)
 
@@ -175,7 +178,10 @@ module Jekyll
       self.posts.sort!
 
       # limit the posts if :limit_posts option is set
-      self.posts = self.posts[-limit_posts, limit_posts] if limit_posts
+      if limit_posts
+        limit = self.posts.length < limit_posts ? self.posts.length : limit_posts
+        self.posts = self.posts[-limit, limit]
+      end
     end
 
     # Run each of the Generators.
@@ -307,7 +313,7 @@ module Jekyll
     # Returns the Array of filtered entries.
     def filter_entries(entries)
       entries = entries.reject do |e|
-        unless ['.htaccess'].include?(e)
+        unless self.include.include?(e)
           ['.', '_', '#'].include?(e[0..0]) ||
           e[-1..-1] == '~' ||
           self.exclude.include?(e) ||
