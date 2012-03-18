@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
 
   s.name              = 'jekyll'
-  s.version           = '0.11.2'
+  s.version           = '0.11.21'
   s.date              = '2011-12-27'
   s.rubyforge_project = 'jekyll'
 

@@ -25,7 +25,7 @@ module Jekyll
       self.pygments        = config['pygments']
       self.permalink_style = config['permalink'].to_sym
       self.exclude         = config['exclude'] || []
-      self.include         = config['include'] || []
+#      self.include         = config['include'] || []
       self.future          = config['future']
       self.limit_posts     = config['limit_posts'] || nil
 
